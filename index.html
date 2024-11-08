@@ -20,14 +20,14 @@
         </div>
         <div class="col-6">
           <label for="inputkm" class="form-label">km</label>
-          <input type="text" class="form-control-km" id="km-field" placeholder="0">
+          <input type="number" class="form-control-km" id="km-field" placeholder="0">
         </div>
         <div class="col-6">
             <label for="inputscelta" class="form-label">Scegli</label>
             <select id="Eta-field" class="form-select">
                 <option selected>Choose...</option>
                 <option value="18">Junior</option>
-                <option value="">Adult</option>
+                <option value="19-64">Adult</option>
                 <option value="65">Senior</option>
             </select>
         </div>
@@ -49,6 +49,7 @@
             <p><span id="Lastname"></span></p>
             <p><span id="km"></span></p>
             <p><span id="Eta"></span></p>
+            <p id="result"></p>
         </div>
       </div>
     
