@@ -3,44 +3,59 @@ const  firstNameField = document.getElementById("Name-field");
 const lastNameField = document.getElementById("Lastname-field");
 const kmField = document.getElementById("km-field");
 const etaField = document.getElementById("Eta-field");
-const result = document.getElementById("result");
 const button = document.querySelector("button");
+
 
 const firstName = document.getElementById("Name");
 const lastName = document.getElementById("Lastname");
 const km = document.getElementById("km");
 const eta = document.getElementById("Eta");
 
-
 button.addEventListener("click", function (event){
     event.preventDefault();
 
-    firstName.innerText = firstNameField.value
-    lastName.innerText = lastNameField.value
-    km.innerText = kmField.value
-    eta.innerText = etaField.value
-    
-    const priceKm = 0.21;
-    const lunghezzaKm = parseInt(kmField.value);
-    const price = priceKm * lunghezzaKm;
+    const card = document.createElement("card");
+    card.innerHTML = "resoconto biglietto";
+    card.classList.add("card");
 
-    const junior = price * 20 / 100;
-    const senior = price * 40 / 100;
-    
-    if(junior <= etaField.value){
-        result.innerText = (price-junior).toFixed(2);
-    }
-    else if(senior <= etaField.value){
-        result.innerText = (price-senior).toFixed(2);
-        
-    }
-    else{
-        result.innerText = price.toFixed(2);
+    const firstName = document.createElement("firstName");
+    firstName.innerHTML = firstNameField.value;
+    firstName.classList.add("firstName");
+    card.appendChild(firstName);
+
+    const lastName = document.createElement("lastName");
+    lastName.innerHTML = lastNameField.value;
+    lastName.classList.add("lastName");
+    card.appendChild(lastName);
+
+    const km = document.createElement("km");
+    km.innerHTML = kmField.value;
+    km.classList.add("km");
+    card.appendChild(km);
+
+    const eta = document.createElement("eta");
+    eta.innerHTML = etaField.value;
+    eta.classList.add("eta");
+    card.appendChild(eta);
+
+    const prezzoBase = kmField.value * 0.21;
+    let sconto = 0;
+    const prezzoFinale = prezzoBase * (1 - sconto);
+
+    if (eta < 18) {
+        sconto = 0.20;
     } 
-
+    else if (eta > 65) {
+        sconto = 0.40;
+    }
+    
+   
+    const result = document.createElement("result");
+    result.innerHTML = prezzoFinale;
+    result.classList.add("result");
+    card.appendChild(result);
+    document.body.appendChild(card);
 })
    
-  
 
-    
 
